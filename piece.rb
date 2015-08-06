@@ -47,18 +47,19 @@ class Piece
   end
 
   def valid_move_seq?(move_sequence)
+    debugger
     new_board = board.dup
     from_pos = pos
 
     move_sequence.each do |to_pos|
-      return false if !new_board[from_pos].perform_jump(to_pos)
+      return false if new_board[from_pos].perform_jump(to_pos) != true
       from_pos = to_pos
     end
 
     return true
   end
 
-  def valid_move?(to_pos) #valid_move
+  def valid_move?(to_pos)
     board.valid_move?(to_pos) &&
       board.empty?(to_pos) &&
         valid_direction?(to_pos)
@@ -68,7 +69,7 @@ class Piece
     @king = true if board.end_of_board?(color, pos)
   end
 
-  def move_dir #dir
+  def move_dir
     color == :red ? 1 : -1
   end
 
@@ -87,7 +88,7 @@ class Piece
 
   private
   def valid_direction?(to_pos)
-    return true if king
+    return true if @king
     direction = (to_pos[0] - pos[0])
 
     (move_dir * direction.abs) == direction

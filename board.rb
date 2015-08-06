@@ -67,7 +67,7 @@ class Board
     new_board = Board.new(false)
 
     pieces.each do |piece|
-      piece.class.new(piece.pos, piece.color, new_board)
+      piece.class.new(piece.pos, piece.color, new_board, piece.king)
     end
 
     new_board
@@ -88,7 +88,7 @@ class Board
   end
 
   def end_of_board?(color, pos)
-    end_row = (color == :red ? 7 : 0)
+    end_row = (color == :red ? BOARD_SIZE - 1 : 0)
 
     pos[0] == end_row
   end

@@ -105,3 +105,6 @@ class Piece
     diff.abs == 2
   end
 end
+
+class InvalidMoveError < StandardError
+end

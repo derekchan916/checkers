@@ -24,6 +24,9 @@ class Game
         puts e.message
         puts "\n"
         retry
+      rescue
+        puts "Something went wrong :("
+        retry
       end
       switch_players
     end

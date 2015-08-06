@@ -37,8 +37,8 @@ class Board
       print "\n"
     end
     print "\n\n"
-    puts "Red has eaten: #{graveyard.select { |piece| piece.color == :black }}"
-    puts "Black has eaten: #{graveyard.select { |piece| piece.color == :red }}"
+    puts "Red has eaten: #{graveyard.select{|piece| piece.color == :black}}"
+    puts "Black has eaten: #{graveyard.select{|piece| piece.color == :red}}"
   end
 
   def move_piece(pos, to_pos)

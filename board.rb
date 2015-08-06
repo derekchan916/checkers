@@ -27,8 +27,9 @@ class Board
 
   def render
     puts "  0 1 2 3 4 5 6 7"
+    #puts "  $$$$$$$$$$$$$$$".colorize(:green).blink
     grid.each_with_index do |row, idx|
-      print "#{idx} "
+      print "#{idx} "# + "$".colorize(:green).blink
       row.each_with_index do |piece, idy|
         bg_color = ((idx + idy).even? ? :red : :white)
         output = piece.nil? ? "  " : "#{piece.render} "

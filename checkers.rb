@@ -14,8 +14,11 @@ class Game
 
   def play
     until over?
+      system("clear")
+      switch_players
       board.render
       puts "Current player is #{current_player.color}"
+
       begin
         piece_pos = current_player.get_start_pos_input
         moves_pos = current_player.get_move_input
@@ -28,9 +31,11 @@ class Game
         puts "Something went wrong :("
         retry
       end
-      switch_players
+
+      sleep(1)
     end
-    puts "Game is over!"
+
+    puts "Game is over! Winner is #{current_player}"
   end
 
   def over?
@@ -70,5 +75,7 @@ class HumanPlayer
   end
 end
 
-game = Game.new
-game.play
+if __FILE__ == $PROGRAM_NAME
+  game = Game.new
+  game.play
+end
